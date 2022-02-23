@@ -4,6 +4,8 @@
 //
 package gomono
 
+import "time"
+
 type (
 	InformationResponse struct {
 		Meta struct {
@@ -120,5 +122,33 @@ type (
 			Countries []string `json:"countries"`
 		} `json:"coverage"`
 		Products []string `json:"products"`
+	}
+
+	WebhookPayload struct {
+		Event string      `json:"event"`
+		Data  WebhookData `json:"data"`
+	}
+	WebhookData struct {
+		Meta struct {
+			DataStatus string `json:"data_status"`
+			AuthMethod string `json:"auth_method"`
+		} `json:"meta"`
+		Account struct {
+			Id          string `json:"_id"`
+			Institution struct {
+				Name     string `json:"name"`
+				BankCode string `json:"bankCode"`
+				Type     string `json:"type"`
+			} `json:"institution"`
+			AccountNumber string    `json:"accountNumber"`
+			Name          string    `json:"name"`
+			Type          string    `json:"type"`
+			Currency      string    `json:"currency"`
+			Bvn           string    `json:"bvn"`
+			Balance       int       `json:"balance"`
+			CreatedAt     time.Time `json:"created_at"`
+			UpdatedAt     time.Time `json:"updated_at"`
+			V             int       `json:"__v"`
+		} `json:"account"`
 	}
 )
