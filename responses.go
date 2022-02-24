@@ -125,30 +125,30 @@ type (
 	}
 
 	WebhookPayload struct {
-		Event string      `json:"event"`
-		Data  WebhookData `json:"data"`
+		Event *string      `json:"event,omitempty"`
+		Data  *WebhookData `json:"data,omitempty"`
 	}
 	WebhookData struct {
-		Meta struct {
-			DataStatus string `json:"data_status"`
-			AuthMethod string `json:"auth_method"`
-		} `json:"meta"`
-		Account struct {
-			Id          string `json:"_id"`
-			Institution struct {
-				Name     string `json:"name"`
-				BankCode string `json:"bankCode"`
-				Type     string `json:"type"`
-			} `json:"institution"`
-			AccountNumber string    `json:"accountNumber"`
-			Name          string    `json:"name"`
-			Type          string    `json:"type"`
-			Currency      string    `json:"currency"`
-			Bvn           string    `json:"bvn"`
-			Balance       int       `json:"balance"`
-			CreatedAt     time.Time `json:"created_at"`
-			UpdatedAt     time.Time `json:"updated_at"`
-			V             int       `json:"__v"`
-		} `json:"account"`
+		Meta *struct {
+			DataStatus *string `json:"data_status,omitempty"`
+			AuthMethod *string `json:"auth_method,omitempty"`
+		} `json:"meta,omitempty"`
+		Account *struct {
+			Id          *string `json:"_id,omitempty"`
+			Institution *struct {
+				Name     *string `json:"name,omitempty"`
+				BankCode *string `json:"bankCode,omitempty"`
+				Type     *string `json:"type,omitempty"`
+			} `json:"institution,omitempty"`
+			AccountNumber *string    `json:"accountNumber,omitempty"`
+			Name          *string    `json:"name,omitempty"`
+			Type          *string    `json:"type,omitempty"`
+			Currency      *string    `json:"currency,omitempty"`
+			Bvn           *string    `json:"bvn,omitempty"`
+			Balance       *int       `json:"balance,omitempty"`
+			CreatedAt     *time.Time `json:"created_at,omitempty"`
+			UpdatedAt     *time.Time `json:"updated_at,omitempty"`
+			V             *int       `json:"__v,omitempty"`
+		} `json:"account,omitempty"`
 	}
 )
