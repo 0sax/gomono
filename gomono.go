@@ -19,6 +19,7 @@ import (
 type (
 	Gomono interface {
 		ExchangeToken(code string) (string, error)
+		GetReauthToken(id string) (string, error)
 		Information(id string) (*InformationResponse, error)
 		Statement(id, period, output string) (*StatementResponse, error)
 		PdfStatementJobStatus(id, jobId string) (*StatementResponsePdf, error)
