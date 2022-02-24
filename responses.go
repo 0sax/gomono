@@ -145,10 +145,10 @@ type (
 			Type          *string    `json:"type,omitempty"`
 			Currency      *string    `json:"currency,omitempty"`
 			Bvn           *string    `json:"bvn,omitempty"`
-			Balance       *int       `json:"balance,omitempty"`
+			Balance       *float64       `json:"balance,omitempty"`
 			CreatedAt     *time.Time `json:"created_at,omitempty"`
 			UpdatedAt     *time.Time `json:"updated_at,omitempty"`
-			V             *int       `json:"__v,omitempty"`
+			V             *interface{}       `json:"__v,omitempty"`
 		} `json:"account,omitempty"`
 	}
 )
