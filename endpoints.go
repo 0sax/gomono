@@ -34,6 +34,21 @@ func (g *gomono) ExchangeToken(code string) (string, error) {
 	return respTarget["id"], nil
 }
 
+//GetReauthToken - https://docs.mono.co/reference/reauth-code
+func (g *gomono) GetReauthToken(id string) (string, error) {
+	if id == "" {
+		return "", errors.New("gomono: Code cannot be blank")
+	}
+
+	respTarget := make(map[string]string)
+
+	err := g.makeRequest("POST", fmt.Sprintf("%v/accounts/%v/reauthorise", g.apiUrl, id), nil, nil, &respTarget)
+	if err != nil {
+		return "", err
+	}
+	return respTarget["token"], nil
+}
+
 //Account Endpoints
 
 //Information - https://docs.mono.co/reference#bank-account-details
