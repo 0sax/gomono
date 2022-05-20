@@ -40,8 +40,6 @@ func (g *gomono) DataSync(id string) (respTarget *DataSyncResponse, err error) {
 		return nil, errors.New("gomono: id cannot be blank")
 	}
 
-	//var respTarget DataSyncResponse
-
 	err = g.makeRequest("POST", fmt.Sprintf("%v/accounts/%v/sync", g.apiUrl, id), nil, nil, &respTarget)
 	if err != nil {
 		if ee, ok := err.(Error); ok && ee.Code == 400 {
