@@ -34,6 +34,29 @@ func (g *gomono) ExchangeToken(code string) (string, error) {
 	return respTarget["id"], nil
 }
 
+//DataSync - https://docs.mono.co/reference/data-sync-manually
+func (g *gomono) DataSync(id string) (respTarget *DataSyncResponse, err error) {
+	if id == "" {
+		return nil, errors.New("gomono: id cannot be blank")
+	}
+
+	//var respTarget DataSyncResponse
+
+	err = g.makeRequest("POST", fmt.Sprintf("%v/accounts/%v/sync", g.apiUrl, id), nil, nil, &respTarget)
+	if err != nil {
+		if ee, ok := err.(Error); ok && ee.Code == 400 {
+			respTarget = &DataSyncResponse{
+				Status:     "failed",
+				HasNewData: false,
+				Code:       "reauthorisation_required",
+			}
+			return respTarget, nil
+		}
+	}
+
+	return
+}
+
 //GetReauthToken - https://docs.mono.co/reference/reauth-code
 func (g *gomono) GetReauthToken(id string) (string, error) {
 	if id == "" {

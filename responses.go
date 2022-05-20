@@ -32,6 +32,12 @@ type (
 		PDF  *StatementResponsePdf
 	}
 
+	DataSyncResponse struct {
+		Status     string
+		HasNewData bool
+		Code       string
+	}
+
 	StatementResponseJson struct {
 		Meta struct{ Count int } `json:"meta"`
 		Data []struct {
@@ -140,15 +146,15 @@ type (
 				BankCode *string `json:"bankCode,omitempty"`
 				Type     *string `json:"type,omitempty"`
 			} `json:"institution,omitempty"`
-			AccountNumber *string    `json:"accountNumber,omitempty"`
-			Name          *string    `json:"name,omitempty"`
-			Type          *string    `json:"type,omitempty"`
-			Currency      *string    `json:"currency,omitempty"`
-			Bvn           *string    `json:"bvn,omitempty"`
-			Balance       *float64       `json:"balance,omitempty"`
-			CreatedAt     *time.Time `json:"created_at,omitempty"`
-			UpdatedAt     *time.Time `json:"updated_at,omitempty"`
-			V             *interface{}       `json:"__v,omitempty"`
+			AccountNumber *string      `json:"accountNumber,omitempty"`
+			Name          *string      `json:"name,omitempty"`
+			Type          *string      `json:"type,omitempty"`
+			Currency      *string      `json:"currency,omitempty"`
+			Bvn           *string      `json:"bvn,omitempty"`
+			Balance       *float64     `json:"balance,omitempty"`
+			CreatedAt     *time.Time   `json:"created_at,omitempty"`
+			UpdatedAt     *time.Time   `json:"updated_at,omitempty"`
+			V             *interface{} `json:"__v,omitempty"`
 		} `json:"account,omitempty"`
 	}
 )
