@@ -7,6 +7,7 @@ package gomono
 import (
 	"errors"
 	"fmt"
+	"net/http"
 	"net/url"
 	"strconv"
 	"strings"
@@ -114,14 +115,14 @@ func (g *gomono) Statement(id, period, output string) (*StatementResponse, error
 	switch output {
 	case "pdf":
 		var pdfRespTarget StatementResponsePdf
-		err := g.makeRequest("GET", endpoint, nil, nil, &pdfRespTarget)
+		err := g.makeRequest(http.MethodGet, endpoint, nil, nil, &pdfRespTarget)
 		if err != nil {
 			return nil, err
 		}
 		result.PDF = &pdfRespTarget
-	case "json":
+	case "json", "":
 		var jsonRespTarget StatementResponseJson
-		err := g.makeRequest("POST", endpoint, nil, nil, &jsonRespTarget)
+		err := g.makeRequest(http.MethodGet, endpoint, nil, nil, &jsonRespTarget)
 		if err != nil {
 			return nil, err
 		}
